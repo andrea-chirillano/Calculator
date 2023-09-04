@@ -23,17 +23,16 @@
             <button class="digit-button" (click)="handleOperatorClick('6')">6</button>
             <button class="digit-button" (click)="handleOperatorClick('9')">9</button>
             <button class="digit-button-equal" (click)="handleOperatorClick('=')">=</button>
+            <button class="operator-button" (click)="handleOperatorClick('«')">«</button>
           </div>
-        </div>
-        <div class="operators">
-          <button class="operator-button" (click)="handleOperatorClick('+')">+</button>
-          <button class="operator-button" (click)="handleOperatorClick('-')">-</button>
-          <button class="operator-button" (click)="handleOperatorClick('*')">×</button>
-          <button class="operator-button" (click)="handleOperatorClick('/')">÷</button>
-        </div>
-        <div class="operators">
-          <button class="operator-button" (click)="handleOperatorClick('«')">«</button>
-          <button class="operator-button" (click)="handleOperatorClick('🛇')">🛇</button>
+          <div class="digit-column">
+            <button class="operator-button" (click)="handleOperatorClick('+')">+</button>
+            <button class="operator-button" (click)="handleOperatorClick('-')">-</button>
+            <button class="operator-button" (click)="handleOperatorClick('*')">×</button>
+            <button class="operator-button" (click)="handleOperatorClick('/')">÷</button>
+            <button class="operator-button" (click)="handleOperatorClick('🛇')">🛇</button>
+          </div>
+
         </div>
     </div>
 </div>    
