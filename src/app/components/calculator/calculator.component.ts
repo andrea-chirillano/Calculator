@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 export class CalculatorComponent {
   currentOperation: string = '';
 
+  ngOnInit() {
+    // Agrega un console.log para verificar el valor de currentOperation
+    console.log('Valor actual de currentOperation:', this.currentOperation);
+  }
+
   handleOperatorClick(operator: string): void {
     switch (operator) {
       case '+':
@@ -144,10 +149,9 @@ export class CalculatorComponent {
   }
 
   addComma(operation: string): string {
-  const pattern = /^[0-9+\-*/]+$/;
-  const lastChar = operation.charAt(operation.length - 1);
+  const pattern = /^[0-9+\-*/]+(\d+,)?$/;
 
-  if (pattern.test(operation) && /\d/.test(lastChar)) {
+  if (pattern.test(operation)) {
     return operation + ",";
   } else {
     return operation;
@@ -163,19 +167,18 @@ export class CalculatorComponent {
   }
 
   result(operation: string): string {
+    if (operation == "") {
+      return operation
+    }
     try {
-      // Utiliza eval para evaluar la expresión matemática
       const resultValue = eval(operation);
-  
-      // Verifica si el resultado es un número
+
       if (typeof resultValue === 'number') {
-        // Convierte el resultado a cadena y devuélvelo
         return resultValue.toString();
       } else {
         throw new Error('La expresión no es válida');
       }
     } catch (error) {
-      // Si hay un error al evaluar la expresión, maneja el error y devuelve un mensaje de error
       return 'Error en la expresión';
     }
   }
