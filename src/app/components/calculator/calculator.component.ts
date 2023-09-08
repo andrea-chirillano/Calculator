@@ -8,11 +8,6 @@ import { Component } from '@angular/core';
 export class CalculatorComponent {
   currentOperation: string = '';
 
-  ngOnInit() {
-    // Agrega un console.log para verificar el valor de currentOperation
-    console.log('Valor actual de currentOperation:', this.currentOperation);
-  }
-
   handleOperatorClick(operator: string): void {
     switch (operator) {
       case '+':
@@ -149,14 +144,20 @@ export class CalculatorComponent {
   }
 
   addComma(operation: string): string {
-  const pattern = /^[0-9+\-*/]+(\d+,)?$/;
-
-  if (pattern.test(operation)) {
-    return operation + ",";
-  } else {
+    const partes = operation.split(',');
+  
+    const ultimaParte = partes[partes.length - 1].trim();
+  
+    const ultimoNumero = parseInt(ultimaParte, 10);
+  
+    const ultimoNumeroFloat = parseFloat(ultimaParte);
+  
+    if (!isNaN(ultimoNumero) && Number.isInteger(ultimoNumero) && !isNaN(ultimoNumeroFloat) && !Number.isInteger(ultimoNumeroFloat)) {
+      return operation + ',';
+    }
+  
     return operation;
   }
-}
 
   remove(operation: string): string {
     return "";
