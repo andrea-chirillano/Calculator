@@ -144,15 +144,20 @@ export class CalculatorComponent {
   }
 
   addComma(operation: string): string {
-  const pattern = /^[0-9+\-*/]+$/;
-  const lastChar = operation.charAt(operation.length - 1);
-
-  if (pattern.test(operation) && /\d/.test(lastChar)) {
-    return operation + ",";
-  } else {
+    const partes = operation.split(',');
+  
+    const ultimaParte = partes[partes.length - 1].trim();
+  
+    const ultimoNumero = parseInt(ultimaParte, 10);
+  
+    const ultimoNumeroFloat = parseFloat(ultimaParte);
+  
+    if (!isNaN(ultimoNumero) && Number.isInteger(ultimoNumero) && !isNaN(ultimoNumeroFloat) && !Number.isInteger(ultimoNumeroFloat)) {
+      return operation + ',';
+    }
+  
     return operation;
   }
-}
 
   remove(operation: string): string {
     return "";
@@ -163,19 +168,18 @@ export class CalculatorComponent {
   }
 
   result(operation: string): string {
+    if (operation == "") {
+      return operation
+    }
     try {
-      // Utiliza eval para evaluar la expresión matemática
       const resultValue = eval(operation);
-  
-      // Verifica si el resultado es un número
+
       if (typeof resultValue === 'number') {
-        // Convierte el resultado a cadena y devuélvelo
         return resultValue.toString();
       } else {
         throw new Error('La expresión no es válida');
       }
     } catch (error) {
-      // Si hay un error al evaluar la expresión, maneja el error y devuelve un mensaje de error
       return 'Error en la expresión';
     }
   }
