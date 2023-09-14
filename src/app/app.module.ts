@@ -5,13 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NumericOperatorInputDirective } from './numeric-operator-input.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalculatorComponent,
-    NumericOperatorInputDirective
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,

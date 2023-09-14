@@ -167,6 +167,10 @@ export class CalculatorComponent {
     return operation.slice(0, -1)
   }
 
+  keyEnterResult() {
+    this.currentOperation = this.result(this.currentOperation);
+  }
+
   result(operation: string): string {
     if (operation == "") {
       return operation
