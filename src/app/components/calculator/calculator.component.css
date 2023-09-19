@@ -71,20 +71,7 @@
   flex-direction: column;
 }
 
-.digit-button {
-  background-color: rgb(34, 34, 34);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s;
-  font-family: "DigifaceWide", sans-serif;
-}
-
-.digit-button-text {
+.digit-button, .digit-button-text {
   background-color: rgb(34, 34, 34);
   color: white;
   border: none;
@@ -96,16 +83,8 @@
   transition: background-color 0.3s;
 }
 
-.operator-button {
-  background-color: rgb(34, 34, 34);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s;
+.digit-button{
+  font-family: "DigifaceWide", sans-serif
 }
 
 .digit-button:hover, .operator-button:hover, .digit-button-text:hover {

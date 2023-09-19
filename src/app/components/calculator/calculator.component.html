@@ -7,10 +7,10 @@
         </div>
         <div class="digits">
           <div class="digit-column">
-            <button class="digit-button" (click)="handleOperatorClick('.')">.</button>
-            <button class="digit-button" (click)="handleOperatorClick('.')">.</button>
-            <button class="digit-button" (click)="handleOperatorClick('.')">.</button>
-            <button class="digit-button" (click)="handleOperatorClick('√x')">√x</button>
+            <button class="digit-button-text" (click)="handleOperatorClick('π')">π</button>
+            <button class="digit-button-text" (click)="handleOperatorClick('x^')">x^</button>
+            <button class="digit-button-text" (click)="handleOperatorClick('√x')">√x</button>
+            <button class="digit-button-text" (click)="handleOperatorClick('ln')">ln</button>
             <button class="digit-button-text" (click)="handleOperatorClick('log')">log</button>
           </div>
           <div class="digit-column">
@@ -28,14 +28,14 @@
             <button class="digit-button" (click)="handleOperatorClick(',')">,</button>
           </div>
           <div class="digit-column">
-            <button class="digit-button-text" (click)="handleOperatorClick('«')">«</button>
+            <button class="digit-button-text" (click)="handleOperatorClick('⌫')">⌫</button>
             <button class="digit-button" (click)="handleOperatorClick('3')">3</button>
             <button class="digit-button" (click)="handleOperatorClick('6')">6</button>
             <button class="digit-button" (click)="handleOperatorClick('9')">9</button>
             <button class="digit-button-text" (click)="handleOperatorClick('=')">=</button>
           </div>
           <div class="digit-column">
-            <button class="operator-button" (click)="handleOperatorClick('🛇')">🛇</button>
+            <button class="digit-button-text" (click)="handleOperatorClick('🛇')">🛇</button>
             <button class="digit-button-text" (click)="handleOperatorClick('+')">+</button>
             <button class="digit-button-text" (click)="handleOperatorClick('-')">-</button>
             <button class="digit-button-text" (click)="handleOperatorClick('*')">×</button>
