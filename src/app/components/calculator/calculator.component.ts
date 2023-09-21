@@ -300,30 +300,54 @@ export class CalculatorComponent {
   }
 
   result(operation: string): string {
-    // Check if string is empty
-    if (operation === "") {
-      return operation;
-    }
+    // Function to solve powers
+    const solvePowers = (expr: string): string => {
+      // Replace powers in string using a regular expression
+      expr = expr.replace(/(\d+(?:,\d+)?)\s*\^\s*(\d+(?:,\d+)?)/g, (_, base, exponent) => {
+        // Calculate power and convert it to string
+        return Math.pow(parseFloat(base.replace(/,/g, '')), parseFloat(exponent.replace(/,/g, ''))).toString();
+      });
+      return expr;
+    };
   
-    // Replace powers in string using a regular expression
-    operation = operation.replace(/(\d+)\^(\d+)/g, (_, base, exponent) => {
-      // Calculate power and convert it to string
-      return Math.pow(parseFloat(base), parseFloat(exponent)).toString();
-    });
+    // Function to resolve an expression with parentheses and apply properties
+    const solveExpression = (expr: string): string => {
+      // Solve powers first
+      expr = solvePowers(expr);
   
-    try {
-      // Evaluate the mathematical operation
-      const resultValue = eval(operation);
+      // Find expressions that can apply properties
+      const propertyRegex = /(\d+(?:,\d+)?)\s*\*\s*\(([^()]+)\)/g;
   
-      if (typeof resultValue === 'number') {
-        return resultValue.toString(); 
-      } else {
-        throw new Error('ERROR');
+      while (propertyRegex.test(expr)) {
+        expr = expr.replace(propertyRegex, (_, factor, innerExpr) => {
+          const result = solveExpression(innerExpr);
+          return (parseFloat(factor.replace(/,/g, '')) * parseFloat(result.replace(/,/g, ''))).toString();
+        });
       }
-    } catch (error) {
-      return 'ERROR';
+  
+      try {
+        // Evaluate the mathematical operation
+        const resultValue = eval(expr.replace(/,/g, '.')); // Reemplazar comas por puntos para parsear números
+  
+        if (typeof resultValue === 'number') {
+          // Convert the result back to format with commas
+          return resultValue.toString().replace(/\./g, ',');
+        } else {
+          throw new Error('ERROR');
+        }
+      } catch (error) {
+        return 'ERROR';
+      }
+    };
+  
+    // Solve operations inside parentheses
+    while (/\([^()]+\)/.test(operation)) {
+      operation = operation.replace(/\(([^()]+)\)/g, (_, innerExpr) => {
+        return solveExpression(innerExpr);
+      });
     }
+  
+    // Solve the remaining expression without parentheses
+    return solveExpression(operation);
   }
-  
-  
 }
