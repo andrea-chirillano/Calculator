@@ -21,16 +21,43 @@
   flex-direction: column;
   align-items: center;
   background-color: rgb(18, 18, 18);
-  height: 62vh;
-  width: 30vw;
+  height: 80vh;
+  width: 25vw;
   margin: 0;
   border-radius: 20px;
 }
 
 @media screen and (max-width: 1075px) {
   .calculator {
-    height: 70vh;
-    width: 95vw;
+    height: 75vh;
+    width:85vw;
+  }
+} 
+
+@media screen and (max-width: 1075px) {
+  .digits {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+    position: relative;
+    top: -100px;
+  }
+}
+
+@media screen and (max-width: 1075px) { 
+  .digit-button, .digit-button-text {
+    background-color: rgb(34, 34, 34);
+    width: 80%;
+    height: 80%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
   }
 }
 
@@ -63,7 +90,9 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 70%;
+  width: 80%;
+  top: 20px;
+  position: relative;
 }
 
 .digit-column {
@@ -73,13 +102,13 @@
 
 .digit-button, .digit-button-text {
   background-color: rgb(34, 34, 34);
-  width: 80%;
-  height: 80%;
+  width: 48px;
+  height: 48px;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-  margin: 5px;
+  margin: 10px 5px;
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s;
@@ -89,6 +118,6 @@
   font-family: "DigifaceWide", sans-serif
 }
 
-.digit-button:hover, .operator-button:hover, .digit-button-text:hover {
+.digit-button:hover, .digit-button-text:hover {
   background-color: rgb(53, 53, 53);
 }
